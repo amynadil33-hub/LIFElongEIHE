@@ -38,8 +38,8 @@ import CourseCard from "./_components/CourseCard.tsx";
 import CategoryCard from "./_components/CategoryCard.tsx";
 
 const STATS = [
-  { icon: BookOpen, value: "500+", label: "Short Courses", color: "text-violet-600" },
-  { icon: Users, value: "50,000+", label: "Students Worldwide", color: "text-pink-500" },
+  { icon: BookOpen, value: "30", label: "Practical Courses", color: "text-violet-600" },
+  { icon: Users, value: "30", label: "Courses Available", color: "text-pink-500" },
   { icon: Award, value: "30,000+", label: "Certificates Issued", color: "text-amber-500" },
   { icon: Globe, value: "80+", label: "Countries Reached", color: "text-emerald-500" },
 ];
@@ -156,7 +156,7 @@ export default function Index() {
             <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur px-4 py-2 rounded-full border border-violet-200 shadow-sm">
               <Sparkles className="w-4 h-4 text-violet-600" />
               <span className="text-sm font-bold text-violet-700">
-                500+ 7-Day Courses Available Now
+                30 Practical 7-Day Courses Available Now
               </span>
             </div>
 
@@ -169,8 +169,7 @@ export default function Index() {
             </h1>
 
             <p className="text-xl text-muted-foreground leading-relaxed max-w-lg">
-              Join 50,000+ learners on EIHE — your lifelong learning hub with short,
-              powerful courses for every stage of life.
+              Join EIHE and build practical skills through focused 7-day courses.
             </p>
 
             <div className="flex flex-wrap gap-3">
