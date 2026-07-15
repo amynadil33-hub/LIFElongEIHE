@@ -1,5 +1,5 @@
 import { Outlet, Link, useLocation, useNavigate } from "react-router-dom";
-import { api, Authenticated, Unauthenticated, AuthLoading, useSupabaseMutation as useMutation, useSupabaseQuery as useQuery } from "@/lib/supabase-api";
+import { api, Authenticated, Unauthenticated, AuthLoading, useSupabaseQuery as useQuery } from "@/lib/supabase-api";
 import { SignInButton } from "@/components/ui/signin.tsx";
 import { Button } from "@/components/ui/button.tsx";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar.tsx";
@@ -91,7 +91,6 @@ function UserMenu() {
 export default function AppLayout() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const syncUser = useMutation(api.users.updateCurrentUser);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
@@ -184,10 +183,10 @@ export default function AppLayout() {
                 <span className="font-black text-xl">EIHE Learning Hub</span>
               </div>
               <p className="text-slate-400 text-sm leading-relaxed max-w-sm">
-                Empowering lifelong learners of all ages with 500+ short courses, expert instructors, and a vibrant global community.
+                Practical 7-day short courses from Everyone’s Institute of Higher Education, serving Maldivian learners through the Everyone’s education brand since 2001.
               </p>
               <div className="flex gap-3 mt-5">
-                {["🌍 Global", "🎓 500+ Courses", "⭐ Expert-led"].map((badge) => (
+                {["🇲🇻 Maldives-Based", "📚 7-Day Courses", "⭐ Since 2001"].map((badge) => (
                   <span key={badge} className="text-xs bg-white/10 px-3 py-1 rounded-full text-slate-300">{badge}</span>
                 ))}
               </div>
@@ -195,7 +194,7 @@ export default function AppLayout() {
             <div>
               <h3 className="font-bold text-sm mb-4 text-slate-200 uppercase tracking-wider">Learn</h3>
               <ul className="space-y-2 text-sm text-slate-400">
-                {["Browse Courses", "Categories", "Featured Courses", "Free Courses"].map((item) => (
+                {["Browse Courses", "Categories", "Featured Courses", "7-Day Courses"].map((item) => (
                   <li key={item}><Link to="/courses" className="hover:text-white transition-colors cursor-pointer">{item}</Link></li>
                 ))}
               </ul>
@@ -211,7 +210,7 @@ export default function AppLayout() {
           </div>
           <div className="border-t border-white/10 mt-10 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-slate-500 text-sm">&copy; {new Date().getFullYear()} EIHE Learning Hub. All rights reserved.</p>
-            <p className="text-slate-500 text-sm">Empowering lifelong learning for everyone, everywhere.</p>
+            <p className="text-slate-500 text-sm">Practical lifelong learning for Maldives.</p>
           </div>
         </div>
       </footer>

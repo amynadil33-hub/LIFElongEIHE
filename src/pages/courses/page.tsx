@@ -64,9 +64,9 @@ export default function CoursesPage() {
         <Badge className="mb-3 bg-violet-100 text-violet-700 border-0 font-bold px-4 py-1">
           All Courses
         </Badge>
-        <h1 className="text-4xl font-black mb-3">Browse 500+ Short Courses</h1>
+        <h1 className="text-4xl font-black mb-3">Browse EIHE Short Courses</h1>
         <p className="text-muted-foreground text-lg">
-          7-day courses designed to fit your schedule and change your life.
+          Practical 7-day courses designed for Maldivian learners and busy lives.
         </p>
       </motion.div>
 

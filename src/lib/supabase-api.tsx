@@ -4,7 +4,7 @@ import {
   useQuery as useRQQuery,
   useQueryClient,
 } from "@tanstack/react-query";
-import { useAuth } from "@usehercules/auth/react";
+import { useAuth } from "@/hooks/use-auth.ts";
 import { useEffect, type ReactNode } from "react";
 import { supabase } from "./supabase";
 import type {
@@ -240,10 +240,10 @@ export const api = {
 
         const patch: any = {};
 
-        if (args?.name) patch.full_name = args.name;
-        if (args?.fullName) patch.full_name = args.fullName;
-        if (args?.avatar) patch.avatar_url = args.avatar;
-        if (args?.avatarUrl) patch.avatar_url = args.avatarUrl;
+        if (args?.name) patch.name = args.name;
+        if (args?.fullName) patch.name = args.fullName;
+        if (args?.avatar) patch.avatar = args.avatar;
+        if (args?.avatarUrl) patch.avatar = args.avatarUrl;
         if (args?.bio !== undefined) patch.bio = args.bio;
 
         const { data, error } = await supabase
@@ -403,14 +403,20 @@ export const api = {
 
         warnSupabase("enrollments.enroll.rpcFallback", rpcResult.error);
 
-        const user = await requireUser();
+        const { data: authData, error: authError } = await supabase.auth.getUser();
+
+        if (authError || !authData?.user) {
+          throw authError ?? new Error("Your session has expired. Please sign in again.");
+        }
+
+        const userId = authData.user.id;
 
         const existing = await run<any | null>(
           "enrollments.existing",
           supabase
             .from("enrollments")
             .select("*")
-            .eq("user_id", user.id)
+            .eq("user_id", userId)
             .eq("course_id", args.courseId)
             .maybeSingle(),
           null,
@@ -421,11 +427,10 @@ export const api = {
         const { data, error } = await supabase
           .from("enrollments")
           .insert({
-            user_id: user.id,
+            user_id: userId,
             course_id: args.courseId,
             status: "active",
-            progress_percent: 0,
-            enrolled_at: new Date().toISOString(),
+            progress_percentage: 0,
           })
           .select()
           .single();

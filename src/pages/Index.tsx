@@ -38,10 +38,10 @@ import CourseCard from "./_components/CourseCard.tsx";
 import CategoryCard from "./_components/CategoryCard.tsx";
 
 const STATS = [
-  { icon: BookOpen, value: "500+", label: "Short Courses", color: "text-violet-600" },
-  { icon: Users, value: "50,000+", label: "Students Worldwide", color: "text-pink-500" },
-  { icon: Award, value: "30,000+", label: "Certificates Issued", color: "text-amber-500" },
-  { icon: Globe, value: "80+", label: "Countries Reached", color: "text-emerald-500" },
+  { icon: BookOpen, value: "Since 2001", label: "Serving education in Maldives", color: "text-violet-600" },
+  { icon: Award, value: "24+ Years", label: "Trusted learning experience", color: "text-pink-500" },
+  { icon: Users, value: "14,000+ Students", label: "Reached through Everyone’s education programs", color: "text-amber-500" },
+  { icon: Zap, value: "7-Day Courses", label: "Practical short course format", color: "text-emerald-500" },
 ];
 
 const FEATURES = [
@@ -65,8 +65,8 @@ const FEATURES = [
   },
   {
     icon: Globe,
-    title: "Global Community",
-    desc: "Join thousands of learners from 80+ countries in our community.",
+    title: "Made for Maldives",
+    desc: "Useful learning for Maldivian adults, professionals, youth, and lifelong learners.",
     color: "bg-emerald-100 text-emerald-700",
   },
 ];
@@ -156,21 +156,22 @@ export default function Index() {
             <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur px-4 py-2 rounded-full border border-violet-200 shadow-sm">
               <Sparkles className="w-4 h-4 text-violet-600" />
               <span className="text-sm font-bold text-violet-700">
-                500+ 7-Day Courses Available Now
+                Everyone’s Education • Serving Maldives Since 2001
               </span>
             </div>
 
             <h1 className="text-5xl lg:text-6xl font-black leading-tight text-balance">
-              Learn Something{" "}
+              Learn New Skills{" "}
               <span className="bg-gradient-to-r from-violet-600 via-purple-500 to-pink-500 bg-clip-text text-transparent">
-                Amazing
+                in 7 Days
               </span>{" "}
-              Every Week
+              with EIHE
             </h1>
 
             <p className="text-xl text-muted-foreground leading-relaxed max-w-lg">
-              Join 50,000+ learners on EIHE — your lifelong learning hub with short,
-              powerful courses for every stage of life.
+              Everyone’s Institute of Higher Education brings practical, flexible short
+              courses for Maldivians who want to build skills, confidence, career
+              readiness, and lifelong learning habits.
             </p>
 
             <div className="flex flex-wrap gap-3">
@@ -195,9 +196,9 @@ export default function Index() {
 
             <div className="flex flex-wrap gap-4 pt-2">
               {[
-                { emoji: "⭐", text: "4.8/5 Rating" },
-                { emoji: "🎓", text: "Free to Start" },
-                { emoji: "📱", text: "Learn Anywhere" },
+                { emoji: "🇲🇻", text: "Maldives-Based" },
+                { emoji: "🎓", text: "Since 2001" },
+                { emoji: "📚", text: "Practical 7-Day Learning" },
               ].map((item) => (
                 <span
                   key={item.text}
@@ -247,8 +248,8 @@ export default function Index() {
                 }}
                 className="absolute -top-6 -right-6 bg-white rounded-2xl shadow-xl p-4"
               >
-                <p className="font-black text-2xl">50K+</p>
-                <p className="text-xs text-muted-foreground">Active Learners</p>
+                <p className="font-black text-2xl">14,000+</p>
+                <p className="text-xs text-muted-foreground">Students Reached</p>
               </motion.div>
             </div>
           </motion.div>
@@ -290,9 +291,10 @@ export default function Index() {
           <Badge className="mb-4 bg-violet-100 text-violet-700 border-0 font-bold px-4 py-1">
             All Subjects
           </Badge>
-          <h2 className="text-4xl font-black mb-4">Explore by Category</h2>
+          <h2 className="text-4xl font-black mb-4">Explore EIHE Course Categories</h2>
           <p className="text-muted-foreground text-lg max-w-xl mx-auto">
-            From technology to health, arts to languages — find your passion.
+            Explore practical courses designed for Maldivian learners, professionals,
+            students, and lifelong learners.
           </p>
         </motion.div>
 
@@ -339,7 +341,7 @@ export default function Index() {
               <Badge className="mb-3 bg-pink-100 text-pink-700 border-0 font-bold px-4 py-1">
                 Featured
               </Badge>
-              <h2 className="text-4xl font-black">Top Courses This Week</h2>
+              <h2 className="text-4xl font-black">Featured EIHE Short Courses</h2>
             </div>
             <Link to="/courses">
               <Button variant="secondary" className="rounded-xl font-bold cursor-pointer">
@@ -525,17 +527,17 @@ export default function Index() {
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.15),transparent)]" />
           <div className="relative">
             <div className="text-5xl mb-4">🚀</div>
-            <h2 className="text-4xl font-black mb-4">Start Learning Today — It's Free!</h2>
+            <h2 className="text-4xl font-black mb-4">Start Your EIHE Short Course Journey</h2>
             <p className="text-white/80 text-lg mb-8 max-w-xl mx-auto">
-              Join thousands of learners already growing with EIHE. Your first course is
-              just one click away.
+              Choose a practical 7-day course and begin building useful skills with
+              Everyone’s Institute of Higher Education.
             </p>
             <Link to="/courses">
               <Button
                 size="lg"
                 className="rounded-2xl bg-white text-violet-700 hover:bg-white/90 font-black px-10 shadow-xl cursor-pointer"
               >
-                <GraduationCap className="w-5 h-5 mr-2" /> Get Started Free
+                <GraduationCap className="w-5 h-5 mr-2" /> Explore EIHE Courses
               </Button>
             </Link>
           </div>

@@ -21,6 +21,7 @@ import {
 import { Star, Users, Clock, BookOpen, CheckCircle2, ArrowRight, GraduationCap, Globe, Database } from "lucide-react";
 import { toast } from "sonner";
 import { motion } from "motion/react";
+import { useState } from "react";
 
 function getErrorMessage(error: unknown) {
   return error instanceof Error ? error.message : "Supabase did not return course data.";
@@ -36,6 +37,7 @@ export default function CourseDetailPage() {
   const enrollmentQuery = useQuery(api.enrollments.getEnrollment, course ? { courseId: course._id } : "skip");
   const enrollment = enrollmentQuery.data;
   const enroll = useMutation(api.enrollments.enroll);
+  const [isEnrolling, setIsEnrolling] = useState(false);
 
   if (courseQuery.isLoading) {
     return (
@@ -78,12 +80,20 @@ export default function CourseDetailPage() {
   }
 
   const handleEnroll = async () => {
+    setIsEnrolling(true);
     try {
       await enroll({ courseId: course._id });
       toast.success("Enrolled successfully! Let's start learning.");
       navigate(`/classroom/${course.slug}`);
-    } catch {
-      toast.error("Failed to enroll. Please try again.");
+    } catch (error) {
+      toast.error("Failed to enroll", {
+        description:
+          error instanceof Error
+            ? error.message
+            : "Please refresh the page and try again.",
+      });
+    } finally {
+      setIsEnrolling(false);
     }
   };
 
@@ -141,8 +151,8 @@ export default function CourseDetailPage() {
                 ) : (
                   <>
                     <Authenticated>
-                      <Button onClick={handleEnroll} className="w-full rounded-xl bg-gradient-to-r from-violet-600 to-pink-500 hover:opacity-90 font-bold cursor-pointer">
-                        Enroll Now — It's Free!
+                      <Button disabled={isEnrolling} onClick={handleEnroll} className="w-full rounded-xl bg-gradient-to-r from-violet-600 to-pink-500 hover:opacity-90 font-bold cursor-pointer">
+                        {isEnrolling ? "Enrolling..." : "Enroll Now — It's Free!"}
                       </Button>
                     </Authenticated>
                     <Unauthenticated>
