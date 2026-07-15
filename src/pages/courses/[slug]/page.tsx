@@ -24,7 +24,11 @@ import { motion } from "motion/react";
 import { useState } from "react";
 
 function getErrorMessage(error: unknown) {
-  return error instanceof Error ? error.message : "Supabase did not return course data.";
+  if (error instanceof Error) return error.message;
+  if (error && typeof error === "object" && "message" in error) {
+    return String(error.message);
+  }
+  return "Supabase did not return course data.";
 }
 
 export default function CourseDetailPage() {
@@ -88,9 +92,7 @@ export default function CourseDetailPage() {
     } catch (error) {
       toast.error("Failed to enroll", {
         description:
-          error instanceof Error
-            ? error.message
-            : "Please refresh the page and try again.",
+          getErrorMessage(error),
       });
     } finally {
       setIsEnrolling(false);

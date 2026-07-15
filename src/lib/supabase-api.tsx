@@ -94,6 +94,34 @@ function formatQueryError(error: unknown) {
     .join(" | ");
 }
 
+function mutationError(error: unknown) {
+  const details = error as {
+    message?: string;
+    code?: string;
+    details?: string;
+  } | null;
+
+  if (
+    details?.code === "23503" ||
+    details?.message?.toLowerCase().includes("foreign key")
+  ) {
+    return new Error(
+      "Your EIHE learner profile is not ready. Apply the latest Supabase migration, then sign out and sign in again.",
+    );
+  }
+
+  if (
+    details?.code === "42501" ||
+    details?.message?.toLowerCase().includes("row-level security")
+  ) {
+    return new Error(
+      "Supabase blocked enrollment because the enrollment policy is not deployed. Apply the latest Supabase migration and try again.",
+    );
+  }
+
+  return new Error(formatQueryError(error) || "Supabase rejected the enrollment request.");
+}
+
 async function run<T>(
   label: string,
   query: PromiseLike<QueryResult<T>>,
@@ -406,7 +434,9 @@ export const api = {
         const { data: authData, error: authError } = await supabase.auth.getUser();
 
         if (authError || !authData?.user) {
-          throw authError ?? new Error("Your session has expired. Please sign in again.");
+          throw authError
+            ? mutationError(authError)
+            : new Error("Your session has expired. Please sign in again.");
         }
 
         const userId = authData.user.id;
@@ -435,7 +465,7 @@ export const api = {
           .select()
           .single();
 
-        if (error) throw error;
+        if (error) throw mutationError(error);
 
         return data.id;
       },
