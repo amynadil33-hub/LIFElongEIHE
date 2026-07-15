@@ -38,10 +38,17 @@ import CourseCard from "./_components/CourseCard.tsx";
 import CategoryCard from "./_components/CategoryCard.tsx";
 
 const STATS = [
+<<<<<<< HEAD
   { icon: BookOpen, value: "Since 2001", label: "Serving education in Maldives", color: "text-violet-600" },
   { icon: Award, value: "24+ Years", label: "Trusted learning experience", color: "text-pink-500" },
   { icon: Users, value: "14,000+ Students", label: "Reached through Everyone’s education programs", color: "text-amber-500" },
   { icon: Zap, value: "7-Day Courses", label: "Practical short course format", color: "text-emerald-500" },
+=======
+  { icon: BookOpen, value: "30", label: "Practical Courses", color: "text-violet-600" },
+  { icon: Users, value: "30", label: "Courses Available", color: "text-pink-500" },
+  { icon: Award, value: "30,000+", label: "Certificates Issued", color: "text-amber-500" },
+  { icon: Globe, value: "80+", label: "Countries Reached", color: "text-emerald-500" },
+>>>>>>> 94a5e225ea657156426d9010450c247f5d1c4122
 ];
 
 const FEATURES = [
@@ -156,7 +163,11 @@ export default function Index() {
             <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur px-4 py-2 rounded-full border border-violet-200 shadow-sm">
               <Sparkles className="w-4 h-4 text-violet-600" />
               <span className="text-sm font-bold text-violet-700">
+<<<<<<< HEAD
                 Everyone’s Education • Serving Maldives Since 2001
+=======
+                30 Practical 7-Day Courses Available Now
+>>>>>>> 94a5e225ea657156426d9010450c247f5d1c4122
               </span>
             </div>
 
@@ -169,9 +180,13 @@ export default function Index() {
             </h1>
 
             <p className="text-xl text-muted-foreground leading-relaxed max-w-lg">
+<<<<<<< HEAD
               Everyone’s Institute of Higher Education brings practical, flexible short
               courses for Maldivians who want to build skills, confidence, career
               readiness, and lifelong learning habits.
+=======
+              Join EIHE and build practical skills through focused 7-day courses.
+>>>>>>> 94a5e225ea657156426d9010450c247f5d1c4122
             </p>
 
             <div className="flex flex-wrap gap-3">
